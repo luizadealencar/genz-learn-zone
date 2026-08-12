@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import heroImg from "@/assets/hero-arena.jpg";
 import { COURSE, MODULES, TOTAL_XP, DAYS } from "@/data/curriculum";
 import { Gamepad2, Trophy, Upload, Users } from "lucide-react";
+import { useAuth } from "@/lib/auth";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -24,6 +25,7 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
+  const { user } = useAuth();
   return (
     <div className="arena-bg">
       {/* HERO */}
@@ -57,10 +59,10 @@ function Home() {
               Ver a trilha completa
             </Link>
             <Link
-              to="/auth"
+              to={user ? "/perfil" : "/auth"}
               className="rounded-lg border border-primary px-6 py-3 font-display font-bold text-primary"
             >
-              Criar meu player
+              {user ? "Meu perfil" : "Criar meu player"}
             </Link>
           </div>
 
