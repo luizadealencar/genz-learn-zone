@@ -92,9 +92,9 @@ const grid = (
   bloco4: string,
 ): Day["schedule"] => [
   { time: "15:00 – 16:00", label: "Briefing", detail: bloco1 },
-  { time: "16:00 – 17:00", label: "Prática guiada", detail: bloco2 },
-  { time: "17:00 – 17:15", label: "Respawn", detail: "Intervalo." },
-  { time: "17:15 – 18:15", label: "Missão do dia", detail: bloco3 },
+  { time: "16:00 – 16:45", label: "Prática guiada", detail: bloco2 },
+  { time: "16:45 – 17:00", label: "Respawn", detail: "Intervalo." },
+  { time: "17:00 – 18:15", label: "Missão do dia", detail: bloco3 },
   { time: "18:15 – 19:00", label: "Playtest & feedback", detail: bloco4 },
 ];
 
