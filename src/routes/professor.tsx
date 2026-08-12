@@ -136,11 +136,17 @@ function Review({
 
   async function decide(status: "aprovado" | "ajustar") {
     setBusy(true);
-    await supabase
-      .from("submissions")
-      .update({ status, xp_awarded: status === "aprovado" ? xp : 0, feedback })
-      .eq("id", sub.id);
+    const { error } = await supabase.rpc("grade_submission", {
+      _submission_id: sub.id,
+      _status: status,
+      _xp: status === "aprovado" ? xp : 0,
+      _feedback: feedback,
+    });
     setBusy(false);
+    if (error) {
+      alert(`Não foi possível salvar a correção: ${error.message}`);
+      return;
+    }
     onDone();
   }
 
