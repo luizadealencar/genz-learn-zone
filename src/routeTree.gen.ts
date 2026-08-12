@@ -10,33 +10,115 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as PerfilRouteImport } from './routes/perfil'
+import { Route as ProfessorRouteImport } from './routes/professor'
+import { Route as RankingRouteImport } from './routes/ranking'
+import { Route as TrilhaIndexRouteImport } from './routes/trilha.index'
+import { Route as TrilhaDiaRouteImport } from './routes/trilha.$dia'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PerfilRoute = PerfilRouteImport.update({
+  id: '/perfil',
+  path: '/perfil',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfessorRoute = ProfessorRouteImport.update({
+  id: '/professor',
+  path: '/professor',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RankingRoute = RankingRouteImport.update({
+  id: '/ranking',
+  path: '/ranking',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrilhaIndexRoute = TrilhaIndexRouteImport.update({
+  id: '/trilha/',
+  path: '/trilha/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrilhaDiaRoute = TrilhaDiaRouteImport.update({
+  id: '/trilha/$dia',
+  path: '/trilha/$dia',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/perfil': typeof PerfilRoute
+  '/professor': typeof ProfessorRoute
+  '/ranking': typeof RankingRoute
+  '/trilha/$dia': typeof TrilhaDiaRoute
+  '/trilha/': typeof TrilhaIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/perfil': typeof PerfilRoute
+  '/professor': typeof ProfessorRoute
+  '/ranking': typeof RankingRoute
+  '/trilha/$dia': typeof TrilhaDiaRoute
+  '/trilha': typeof TrilhaIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/perfil': typeof PerfilRoute
+  '/professor': typeof ProfessorRoute
+  '/ranking': typeof RankingRoute
+  '/trilha/$dia': typeof TrilhaDiaRoute
+  '/trilha/': typeof TrilhaIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/perfil'
+    | '/professor'
+    | '/ranking'
+    | '/trilha/$dia'
+    | '/trilha/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/auth'
+    | '/perfil'
+    | '/professor'
+    | '/ranking'
+    | '/trilha/$dia'
+    | '/trilha'
+  id:
+    | '__root__'
+    | '/'
+    | '/auth'
+    | '/perfil'
+    | '/professor'
+    | '/ranking'
+    | '/trilha/$dia'
+    | '/trilha/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthRoute: typeof AuthRoute
+  PerfilRoute: typeof PerfilRoute
+  ProfessorRoute: typeof ProfessorRoute
+  RankingRoute: typeof RankingRoute
+  TrilhaDiaRoute: typeof TrilhaDiaRoute
+  TrilhaIndexRoute: typeof TrilhaIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +130,59 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/perfil': {
+      id: '/perfil'
+      path: '/perfil'
+      fullPath: '/perfil'
+      preLoaderRoute: typeof PerfilRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/professor': {
+      id: '/professor'
+      path: '/professor'
+      fullPath: '/professor'
+      preLoaderRoute: typeof ProfessorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ranking': {
+      id: '/ranking'
+      path: '/ranking'
+      fullPath: '/ranking'
+      preLoaderRoute: typeof RankingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/trilha/': {
+      id: '/trilha/'
+      path: '/trilha'
+      fullPath: '/trilha/'
+      preLoaderRoute: typeof TrilhaIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/trilha/$dia': {
+      id: '/trilha/$dia'
+      path: '/trilha/$dia'
+      fullPath: '/trilha/$dia'
+      preLoaderRoute: typeof TrilhaDiaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthRoute: AuthRoute,
+  PerfilRoute: PerfilRoute,
+  ProfessorRoute: ProfessorRoute,
+  RankingRoute: RankingRoute,
+  TrilhaDiaRoute: TrilhaDiaRoute,
+  TrilhaIndexRoute: TrilhaIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
