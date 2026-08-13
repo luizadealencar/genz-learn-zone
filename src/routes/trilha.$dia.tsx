@@ -6,6 +6,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { ArrowLeft, ArrowRight, Target, BookOpen, Trophy, Link2 } from "lucide-react";
 import { Figure } from "@/components/Figure";
 import { getResources } from "@/data/resources";
+import { getPeople } from "@/data/people";
 
 export const Route = createFileRoute("/trilha/$dia")({
   loader: ({ params }) => {
@@ -126,6 +127,22 @@ function DayPage() {
                   ))}
                 </ul>
                 <Figure id={block.figure} />
+                {getPeople(block.people).map((person) => (
+                  <div key={person.name} className="mt-4 rounded-lg border-l-2 border-primary bg-background/40 p-4">
+                    <p className="font-display text-sm font-bold text-primary">
+                      Quem foi {person.name}?
+                    </p>
+                    <p className="mt-1 text-[11px] uppercase tracking-wider text-muted-foreground">
+                      {person.lived}
+                    </p>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      {person.what}
+                    </p>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      {person.why}
+                    </p>
+                  </div>
+                ))}
               </div>
             ))}
           </div>
