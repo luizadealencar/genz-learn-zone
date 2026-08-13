@@ -102,7 +102,8 @@ export const RESOURCES: Record<number, Resource[]> = {
   ],
   21: [
     { label: "Canva", url: "https://www.canva.com/pt_br/", kind: "ferramenta", note: "Pro pitch final, em português.", pt: true },
-    { label: "Behance", url: "https://www.behance.net", kind: "exemplo", note: "Portfólios reais de UX, muitos de brasileiros." },
+    { label: "UX Collective Brasil — cases", url: "https://brasil.uxdesign.cc/", kind: "exemplo", note: "Busque 'estudo de caso'. Cases de UX escritos por brasileiros.", pt: true },
+    { label: "Comunidade Figma", url: "https://www.figma.com/community", kind: "exemplo", note: "Templates gratuitos de apresentação e de case de portfólio." },
   ],
 };
 
