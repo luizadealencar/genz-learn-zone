@@ -57,6 +57,12 @@ export const PEOPLE: Record<string, Person> = {
     what: "Programador e designer, criador do Visual Basic. Introduziu a técnica de personas no livro 'The Inmates Are Running the Asylum' (1998).",
     why: "Antes dele, projetava-se para 'o usuário', uma abstração. A persona obriga a equipe a decidir para quem, com nome e contexto.",
   },
+  "design-council": {
+    name: "Design Council (Reino Unido)",
+    lived: "organização britânica, modelo publicado em 2005",
+    what: "Órgão britânico de design que analisou o processo de onze empresas grandes e percebeu que todas seguiam o mesmo ritmo: abrir, fechar, abrir, fechar. Batizou isso de Double Diamond.",
+    why: "É o diagrama mais usado no mundo para explicar processo de design. O ponto dele não é a técnica, e sim a disciplina de não pular a primeira metade — a de descobrir qual é o problema.",
+  },
   knapp: {
     name: "Jake Knapp",
     lived: "americano, nascido em 1978",

@@ -184,9 +184,10 @@ export const DAYS: Day[] = [
           "Definir (convergir): sintetizar e escrever o problema real.",
           "Desenvolver (divergir): gerar muitas ideias e alternativas.",
           "Entregar (convergir): prototipar, testar, refinar e lançar.",
+          "O modelo foi publicado pelo Design Council britânico em 2005, depois de observar como onze empresas grandes projetavam.",
         ],
         figure: "duplo-diamante",
-        people: ["knapp"],
+        people: ["design-council"],
       },
       {
         heading: "Design Thinking em 5 etapas",
@@ -550,6 +551,7 @@ export const DAYS: Day[] = [
           "Persona não é invenção: cada característica vem de padrão observado na pesquisa.",
           "Proto-persona é aceitável no começo, desde que marcada como hipótese.",
           "2 a 3 personas por produto; mais que isso perde foco.",
+          "A técnica foi criada por Alan Cooper em 1998, justamente para acabar com o projeto feito para 'o usuário' — uma abstração que não existe.",
         ],
         people: ["cooper"],
       },
@@ -1232,6 +1234,7 @@ export const DAYS: Day[] = [
         points: [
           "Defina 3 tarefas reais que a pessoa deve conseguir concluir sozinha.",
           "Prepare roteiro, formulário de observação e cronômetro.",
+          "Steve Krug, autor de 'Não Me Faça Pensar', defende o teste simples e frequente: pouca gente, sempre, vale mais que um estudo caro uma vez por ano.",
         ],
         people: ["krug"],
       },
