@@ -115,6 +115,15 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      grade_submission: {
+        Args: {
+          _feedback: string
+          _status: Database["public"]["Enums"]["submission_status"]
+          _submission_id: string
+          _xp: number
+        }
+        Returns: undefined
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
