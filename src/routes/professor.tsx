@@ -136,7 +136,11 @@ function Review({
 
   async function decide(status: "aprovado" | "ajustar") {
     setBusy(true);
-    const { error } = await supabase.rpc("grade_submission", {
+    const rpc = supabase.rpc as unknown as (
+      fn: string,
+      args: Record<string, unknown>,
+    ) => Promise<{ error: { message: string } | null }>;
+    const { error } = await rpc("grade_submission", {
       _submission_id: sub.id,
       _status: status,
       _xp: status === "aprovado" ? xp : 0,

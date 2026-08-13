@@ -4,6 +4,7 @@ import { DAYS, getDay, getModule } from "@/data/curriculum";
 import { useAuth } from "@/lib/auth";
 import { supabase } from "@/integrations/supabase/client";
 import { ArrowLeft, ArrowRight, Target, BookOpen, Trophy } from "lucide-react";
+import { Figure } from "@/components/Figure";
 
 export const Route = createFileRoute("/trilha/$dia")({
   loader: ({ params }) => {
@@ -123,6 +124,7 @@ function DayPage() {
                     </li>
                   ))}
                 </ul>
+                <Figure id={block.figure} />
               </div>
             ))}
           </div>
