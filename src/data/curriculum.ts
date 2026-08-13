@@ -183,6 +183,7 @@ export const DAYS: Day[] = [
           "Desenvolver (divergir): gerar muitas ideias e alternativas.",
           "Entregar (convergir): prototipar, testar, refinar e lançar.",
         ],
+        figure: "duplo-diamante",
       },
       {
         heading: "Design Thinking em 5 etapas",
@@ -251,6 +252,7 @@ export const DAYS: Day[] = [
           "9. Ajudar a reconhecer, diagnosticar e recuperar-se de erros.",
           "10. Ajuda e documentação.",
         ],
+        figure: "mensagem-de-erro",
       },
       {
         heading: "Como fazer uma avaliação heurística",
@@ -314,6 +316,7 @@ export const DAYS: Day[] = [
           "Lei de Jakob: as pessoas esperam que seu produto funcione como os outros que elas já usam.",
           "Efeito Zeigarnik: tarefas incompletas incomodam — barra de progresso e checklist aumentam conclusão (base de toda gamificação).",
         ],
+        figure: "leis-fitts-hick",
       },
       {
         heading: "Gamificação como ferramenta de UX",
@@ -374,6 +377,7 @@ export const DAYS: Day[] = [
           "Tela vazia (empty state) é oportunidade: explique e convide à ação.",
           "Feedback deve ser imediato (<100 ms para toque, indicador acima de 1 s).",
         ],
+        figure: "mapa-de-estados",
       },
       {
         heading: "Microinterações",
