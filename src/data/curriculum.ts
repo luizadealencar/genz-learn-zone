@@ -324,6 +324,7 @@ export const DAYS: Day[] = [
           "Pontos, níveis, streaks, badges e ranking funcionam quando dão sentido de progresso, não quando viram pressão.",
           "Cuidado com dark patterns: FOMO artificial, loot boxes abusivas, cancelamento escondido.",
         ],
+        figure: "dark-patterns-ecommerce",
       },
     ],
     schedule: grid(
@@ -552,6 +553,7 @@ export const DAYS: Day[] = [
           "Quadrantes: o que pensa e sente, o que vê, o que ouve, o que fala e faz + dores e ganhos.",
           "Serve para transformar transcrição bruta em entendimento compartilhado pela equipe.",
         ],
+        figure: "mapa-empatia",
       },
       {
         heading: "Da coleta à síntese",
@@ -724,6 +726,7 @@ export const DAYS: Day[] = [
           "Sempre desenhe também o caminho infeliz: erro de senha, sem internet, pagamento recusado, sala cheia.",
           "Conte os toques: cada passo extra derruba a conversão.",
         ],
+        figure: "user-flow",
       },
       {
         heading: "Padrões que economizam passos",
@@ -776,6 +779,7 @@ export const DAYS: Day[] = [
           "Rápido de refazer: você testa 5 versões no tempo de finalizar uma.",
           "Fidelidades: crocodilo (rabisco) → lo-fi → mid-fi → hi-fi.",
         ],
+        figure: "fidelidade",
       },
       {
         heading: "Hierarquia visual",
@@ -852,6 +856,7 @@ export const DAYS: Day[] = [
           "Texto normal: mínimo 4.5:1. Texto grande (24 px ou 19 px em negrito): 3:1. Componentes e ícones: 3:1.",
           "Ferramentas: WebAIM Contrast Checker, plugin Stark, contraste nativo do Figma.",
         ],
+        figure: "contraste-wcag",
       },
     ],
     schedule: grid(
@@ -1027,6 +1032,7 @@ export const DAYS: Day[] = [
           "Padrões de reflow: coluna única, cards que empilham, menu que vira hambúrguer, tabela que vira lista.",
           "Alvos de toque de 44 px e área de polegar no mobile.",
         ],
+        figure: "breakpoints",
       },
       {
         heading: "Padrões W3C",
