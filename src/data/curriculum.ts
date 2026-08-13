@@ -12,7 +12,7 @@ export type Day = {
   title: string;
   hook: string;
   objectives: string[];
-  theory: { heading: string; points: string[] }[];
+  theory: { heading: string; points: string[]; figure?: string }[];
   schedule: { time: string; label: string; detail: string }[];
   activities: Activity[];
 };
@@ -93,7 +93,7 @@ const grid = (
 ): Day["schedule"] => [
   { time: "15:00 – 16:00", label: "Briefing", detail: bloco1 },
   { time: "16:00 – 16:45", label: "Prática guiada", detail: bloco2 },
-  { time: "16:45 – 17:00", label: "Respawn", detail: "Intervalo dos meninos: 16:45 às 17:00." },
+  { time: "16:45 – 17:00", label: "Respawn", detail: "Intervalo." },
   { time: "17:00 – 18:15", label: "Missão do dia", detail: bloco3 },
   { time: "18:15 – 19:00", label: "Playtest & feedback", detail: bloco4 },
 ];
@@ -118,6 +118,7 @@ export const DAYS: Day[] = [
           "Analogia: UX é o game design (regras, progressão, dificuldade, recompensa); UI é o HUD e a arte.",
           "Um jogo com arte linda e tutorial confuso tem boa UI e péssima UX.",
         ],
+        figure: "ux-vs-ui",
       },
       {
         heading: "Os 5 pilares (Jesse James Garrett, adaptado)",
@@ -128,6 +129,7 @@ export const DAYS: Day[] = [
           "Esqueleto: onde cada elemento fica na tela (wireframe).",
           "Superfície: cores, tipos, imagens, identidade (UI).",
         ],
+        figure: "cinco-pilares",
       },
       {
         heading: "Onde UX aparece no mercado",
