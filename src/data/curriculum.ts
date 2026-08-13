@@ -12,7 +12,7 @@ export type Day = {
   title: string;
   hook: string;
   objectives: string[];
-  theory: { heading: string; points: string[]; figure?: string }[];
+  theory: { heading: string; points: string[]; figure?: string; people?: string[] }[];
   schedule: { time: string; label: string; detail: string }[];
   activities: Activity[];
 };
@@ -119,6 +119,7 @@ export const DAYS: Day[] = [
           "Um jogo com arte linda e tutorial confuso tem boa UI e péssima UX.",
         ],
         figure: "ux-vs-ui",
+        people: ["norman"],
       },
       {
         heading: "Os 5 pilares (Jesse James Garrett, adaptado)",
@@ -130,6 +131,7 @@ export const DAYS: Day[] = [
           "Superfície: cores, tipos, imagens, identidade (UI).",
         ],
         figure: "cinco-pilares",
+        people: ["garrett"],
       },
       {
         heading: "Onde UX aparece no mercado",
@@ -184,6 +186,7 @@ export const DAYS: Day[] = [
           "Entregar (convergir): prototipar, testar, refinar e lançar.",
         ],
         figure: "duplo-diamante",
+        people: ["knapp"],
       },
       {
         heading: "Design Thinking em 5 etapas",
@@ -253,6 +256,7 @@ export const DAYS: Day[] = [
           "10. Ajuda e documentação.",
         ],
         figure: "mensagem-de-erro",
+        people: ["nielsen"],
       },
       {
         heading: "Como fazer uma avaliação heurística",
@@ -317,6 +321,7 @@ export const DAYS: Day[] = [
           "Efeito Zeigarnik: tarefas incompletas incomodam — barra de progresso e checklist aumentam conclusão (base de toda gamificação).",
         ],
         figure: "leis-fitts-hick",
+        people: ["fitts", "hick"],
       },
       {
         heading: "Gamificação como ferramenta de UX",
@@ -546,6 +551,7 @@ export const DAYS: Day[] = [
           "Proto-persona é aceitável no começo, desde que marcada como hipótese.",
           "2 a 3 personas por produto; mais que isso perde foco.",
         ],
+        people: ["cooper"],
       },
       {
         heading: "Mapa de empatia",
@@ -667,6 +673,7 @@ export const DAYS: Day[] = [
           "Navegação: global, local, contextual, breadcrumbs, footer.",
           "Busca: campo, filtros, facetas, sugestões, resultado vazio útil.",
         ],
+        people: ["rosenfeld-morville"],
       },
       {
         heading: "Card sorting e tree testing",
@@ -788,6 +795,7 @@ export const DAYS: Day[] = [
           "Padrões de leitura: F (conteúdo denso) e Z (páginas de campanha).",
           "Uma tela = um objetivo principal = um botão primário.",
         ],
+        figure: "hierarquia-boa-ruim",
       },
       {
         heading: "Grid e layout",
@@ -1158,6 +1166,7 @@ export const DAYS: Day[] = [
           "Legendas e transcrição em vídeo; nunca autoplay com som.",
           "Considere daltonismo, baixa visão, dislexia, TDAH, deficiência motora e uso situacional (sol na tela, uma mão só).",
         ],
+        figure: "formulario-bom-ruim",
       },
       {
         heading: "Ferramentas",
@@ -1224,6 +1233,7 @@ export const DAYS: Day[] = [
           "Defina 3 tarefas reais que a pessoa deve conseguir concluir sozinha.",
           "Prepare roteiro, formulário de observação e cronômetro.",
         ],
+        people: ["krug"],
       },
     ],
     schedule: grid(
