@@ -129,10 +129,13 @@ function DayPage() {
                 <Figure id={block.figure} />
                 {getPeople(block.people).map((person) => (
                   <div key={person.name} className="mt-4 rounded-lg border-l-2 border-primary bg-background/40 p-4">
-                    <p className="font-display text-sm font-bold text-primary">
-                      Quem foi {person.name}?
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+                      De onde vem essa ideia
                     </p>
-                    <p className="mt-1 text-[11px] uppercase tracking-wider text-muted-foreground">
+                    <p className="mt-1 font-display text-sm font-bold text-primary">
+                      {person.name}
+                    </p>
+                    <p className="text-[11px] uppercase tracking-wider text-muted-foreground">
                       {person.lived}
                     </p>
                     <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
