@@ -149,8 +149,15 @@ function DayPage() {
                     <span className="font-display text-sm font-bold text-primary">
                       {r.label}
                     </span>
-                    <span className="rounded border border-border px-2 py-0.5 text-[10px] uppercase tracking-wider text-muted-foreground">
-                      {r.kind}
+                    <span className="flex shrink-0 items-center gap-1">
+                      {r.pt && (
+                        <span className="rounded border border-primary/60 px-1.5 py-0.5 text-[10px] font-bold uppercase text-primary">
+                          PT
+                        </span>
+                      )}
+                      <span className="rounded border border-border px-2 py-0.5 text-[10px] uppercase tracking-wider text-muted-foreground">
+                        {r.kind}
+                      </span>
                     </span>
                   </div>
                   {r.note && (
