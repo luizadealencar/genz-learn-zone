@@ -3,8 +3,9 @@ import { useEffect, useState } from "react";
 import { DAYS, getDay, getModule } from "@/data/curriculum";
 import { useAuth } from "@/lib/auth";
 import { supabase } from "@/integrations/supabase/client";
-import { ArrowLeft, ArrowRight, Target, BookOpen, Trophy } from "lucide-react";
+import { ArrowLeft, ArrowRight, Target, BookOpen, Trophy, Link2 } from "lucide-react";
 import { Figure } from "@/components/Figure";
+import { getResources } from "@/data/resources";
 
 export const Route = createFileRoute("/trilha/$dia")({
   loader: ({ params }) => {
@@ -129,6 +130,39 @@ function DayPage() {
             ))}
           </div>
         </section>
+
+        {getResources(day.number).length > 0 && (
+          <section className="mt-12">
+            <h2 className="flex items-center gap-2 font-display text-2xl font-bold">
+              <Link2 className="h-5 w-5 text-primary" /> Arsenal do dia
+            </h2>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2">
+              {getResources(day.number).map((r) => (
+                <a
+                  key={r.url + r.label}
+                  href={r.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="panel block p-4 transition-colors hover:border-primary"
+                >
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="font-display text-sm font-bold text-primary">
+                      {r.label}
+                    </span>
+                    <span className="rounded border border-border px-2 py-0.5 text-[10px] uppercase tracking-wider text-muted-foreground">
+                      {r.kind}
+                    </span>
+                  </div>
+                  {r.note && (
+                    <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+                      {r.note}
+                    </p>
+                  )}
+                </a>
+              ))}
+            </div>
+          </section>
+        )}
 
         <section className="mt-12">
           <h2 className="flex items-center gap-2 font-display text-2xl font-bold">
