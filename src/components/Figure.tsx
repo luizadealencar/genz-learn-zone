@@ -11,6 +11,23 @@ const T = {
   cap: { fontSize: 11.5, fill: "var(--muted-foreground)" } as const,
 };
 
+
+// SVG não quebra linha sozinho. Este helper recebe as linhas já divididas.
+function Lines({
+  x, y, lines, style, anchor = "start", lh = 16,
+}: {
+  x: number; y: number; lines: string[];
+  style: React.CSSProperties; anchor?: "start" | "middle" | "end"; lh?: number;
+}) {
+  return (
+    <text x={x} y={y} textAnchor={anchor} style={style}>
+      {lines.map((l, i) => (
+        <tspan key={l + i} x={x} dy={i === 0 ? 0 : lh}>{l}</tspan>
+      ))}
+    </text>
+  );
+}
+
 const FIGURES: Record<string, { title: string; svg: ReactNode }> = {
   "ux-vs-ui": {
     title: "UX é a jornada inteira; UI é a camada visível de uma etapa",
@@ -188,7 +205,7 @@ const FIGURES: Record<string, { title: string; svg: ReactNode }> = {
           <rect key={`h1-${i}`} x={372 + i * 40} y="98" width="32" height="20" rx="4"
             fill="var(--mint)" opacity="0.5" />
         ))}
-        <text x="512" y="113" style={T.small}>3 opções: decide rápido</text>
+        <text x="512" y="113" style={T.small}>3 opções: rápido</text>
 
         {Array.from({ length: 10 }).map((_, i) => (
           <rect key={`h2-${i}`} x={372 + (i % 5) * 24} y={166 + Math.floor(i / 5) * 26}
@@ -262,12 +279,12 @@ const FIGURES: Record<string, { title: string; svg: ReactNode }> = {
         <text x="228" y="368" style={{ fontSize: 8, fill: "var(--muted-foreground)" }}>ao continuar você aceita receber notificações</text>
 
         {[
-          ["contagem falsa: reinicia sozinha", 74, 60],
+          ["contagem falsa", 74, 60],
           ["escassez inventada", 200, 195],
-          ["preço 'de/por' que nunca existiu", 226, 217],
-          ["cassino disfarçado de desconto", 300, 305],
-          ["botão de fechar quase invisível", 340, 296],
-          ["consentimento escondido no rodapé", 380, 366],
+          ["preço \u201cde/por\u201d irreal", 226, 217],
+          ["cassino disfarçado", 300, 305],
+          ["fechar quase invisível", 340, 296],
+          ["consentimento no rodapé", 380, 366],
         ].map(([label, y, ty], i) => (
           <g key={label as string}>
             <line x1={i % 2 === 0 ? 210 : 470} y1={ty as number}
@@ -287,27 +304,25 @@ const FIGURES: Record<string, { title: string; svg: ReactNode }> = {
   "mapa-empatia": {
     title: "Mapa de empatia: quatro quadrantes, uma pessoa",
     svg: (
-      <svg viewBox="0 0 680 340" className="w-full" role="img"
+      <svg viewBox="0 0 680 360" className="w-full" role="img"
         aria-label="Quatro quadrantes: pensa e sente, vê, fala e faz, ouve, em torno da pessoa.">
         {[
-          ["PENSA E SENTE", "medos, expectativas, o que não diz em voz alta", 60, 30, "var(--violet)"],
-          ["VÊ", "o que aparece na tela dele, o que os amigos usam", 360, 30, "var(--cyan)"],
-          ["FALA E FAZ", "o que ele declara e o que de fato faz (nem sempre bate)", 60, 180, "var(--mint)"],
-          ["OUVE", "amigos, streamers, algoritmo, família", 360, 180, "var(--gold)"],
-        ].map(([t, d, x, y, c]) => (
+          ["PENSA E SENTE", ["medos, expectativas,", "o que não diz em voz alta"], 40, 30, "var(--violet)"],
+          ["VÊ", ["o que aparece na tela dele,", "o que os amigos usam"], 360, 30, "var(--cyan)"],
+          ["FALA E FAZ", ["o que ele declara e o que", "de fato faz — nem sempre bate"], 40, 190, "var(--mint)"],
+          ["OUVE", ["amigos, streamers,", "algoritmo, família"], 360, 190, "var(--gold)"],
+        ].map(([t, ls, x, y, c]) => (
           <g key={t as string}>
-            <rect x={x as number} y={y as number} width="260" height="120" rx="10"
+            <rect x={x as number} y={y as number} width="280" height="120" rx="10"
               fill="var(--surface)" stroke={c as string} strokeWidth="1" />
             <text x={(x as number) + 20} y={(y as number) + 32}
               style={{ ...T.label, fill: c as string }}>{t as string}</text>
-            <text x={(x as number) + 20} y={(y as number) + 58} style={T.small}>{d as string}</text>
+            <Lines x={(x as number) + 20} y={(y as number) + 60} lines={ls as string[]} style={T.small} />
           </g>
         ))}
-        <circle cx="340" cy="170" r="30" fill="var(--surface-2)" stroke="var(--foreground)" strokeWidth="1" />
-        <text x="340" y="174" textAnchor="middle" style={T.small}>pessoa</text>
-        <text x="340" y="326" textAnchor="middle" style={T.cap}>
-          quando &quot;fala&quot; e &quot;faz&quot; se contradizem, a verdade está no &quot;faz&quot;
-        </text>
+        <circle cx="340" cy="180" r="28" fill="var(--surface-2)" stroke="var(--foreground)" strokeWidth="1" />
+        <text x="340" y="184" textAnchor="middle" style={T.small}>pessoa</text>
+        <Lines x={340} y={344} anchor="middle" lines={["quando \u201cfala\u201d e \u201cfaz\u201d se contradizem, a verdade está no \u201cfaz\u201d"]} style={T.cap} />
       </svg>
     ),
   },
@@ -452,6 +467,76 @@ const FIGURES: Record<string, { title: string; svg: ReactNode }> = {
           <text x="538" y="264" textAnchor="middle" style={T.small}>desktop</text>
           <text x="538" y="282" textAnchor="middle" style={{ fontSize: 10, fill: "var(--muted-foreground)" }}>3 colunas</text>
         </g>
+      </svg>
+    ),
+  },
+
+  "hierarquia-boa-ruim": {
+    title: "Mesma informação, hierarquia diferente",
+    svg: (
+      <svg viewBox="0 0 680 320" className="w-full" role="img"
+        aria-label="Duas telas com o mesmo conteúdo: uma sem hierarquia, outra com tamanho e peso definindo a leitura.">
+        <rect x="30" y="30" width="290" height="220" rx="12" fill="var(--surface)" stroke="var(--coral)" strokeWidth="1" />
+        <text x="50" y="58" style={{ ...T.label, fill: "var(--coral)" }}>Sem hierarquia</text>
+        {[0, 1, 2, 3, 4, 5].map((i) => (
+          <rect key={i} x="50" y={80 + i * 26} width={i % 2 ? 230 : 250} height="12" rx="2"
+            fill="var(--muted-foreground)" opacity="0.45" />
+        ))}
+        <text x="175" y="238" textAnchor="middle" style={T.small}>tudo do mesmo tamanho</text>
+
+        <rect x="360" y="30" width="290" height="220" rx="12" fill="var(--surface)" stroke="var(--mint)" strokeWidth="1" />
+        <text x="380" y="58" style={{ ...T.label, fill: "var(--mint)" }}>Com hierarquia</text>
+        <rect x="380" y="78" width="200" height="22" rx="3" fill="var(--mint)" opacity="0.65" />
+        <rect x="380" y="110" width="150" height="10" rx="2" fill="var(--muted-foreground)" opacity="0.5" />
+        <rect x="380" y="134" width="250" height="8" rx="2" fill="var(--muted-foreground)" opacity="0.3" />
+        <rect x="380" y="150" width="240" height="8" rx="2" fill="var(--muted-foreground)" opacity="0.3" />
+        <rect x="380" y="166" width="180" height="8" rx="2" fill="var(--muted-foreground)" opacity="0.3" />
+        <rect x="380" y="192" width="110" height="26" rx="5" fill="var(--mint)" opacity="0.55" />
+        <text x="505" y="238" textAnchor="middle" style={T.small}>o olho sabe por onde começar</text>
+
+        <Lines x={340} y={294} anchor="middle" style={T.cap}
+          lines={["hierarquia não é enfeite: é dizer ao usuário o que ler primeiro"]} />
+      </svg>
+    ),
+  },
+
+  "formulario-bom-ruim": {
+    title: "O mesmo formulário, antes e depois",
+    svg: (
+      <svg viewBox="0 0 680 360" className="w-full" role="img"
+        aria-label="Formulário ruim com campos apertados e erro genérico, ao lado de formulário bom com rótulos, dica e erro específico.">
+        <rect x="30" y="30" width="290" height="260" rx="12" fill="var(--surface)" stroke="var(--coral)" strokeWidth="1" />
+        <text x="50" y="58" style={{ ...T.label, fill: "var(--coral)" }}>Ruim</text>
+        {[0, 1, 2].map((i) => (
+          <g key={i}>
+            <rect x="50" y={78 + i * 42} width="250" height="28" rx="4"
+              fill="var(--surface-2)" stroke="var(--border)" strokeWidth="0.5" />
+            <text x="60" y={96 + i * 42} style={{ fontSize: 10, fill: "var(--muted-foreground)" }}>
+              {["Nome", "E-mail", "Senha"][i]}
+            </text>
+          </g>
+        ))}
+        <text x="50" y="222" style={{ fontSize: 10, fill: "var(--coral)" }}>Dados inválidos.</text>
+        <Lines x={50} y={248} style={T.small} lh={15}
+          lines={["rótulo some ao digitar", "erro não diz qual campo", "nenhuma dica de formato"]} />
+
+        <rect x="360" y="30" width="290" height="260" rx="12" fill="var(--surface)" stroke="var(--mint)" strokeWidth="1" />
+        <text x="380" y="58" style={{ ...T.label, fill: "var(--mint)" }}>Bom</text>
+        {[0, 1, 2].map((i) => (
+          <g key={i}>
+            <text x="380" y={80 + i * 52} style={{ fontSize: 10, fill: "var(--muted-foreground)" }}>
+              {["Nome", "E-mail", "Senha"][i]}
+            </text>
+            <rect x="380" y={86 + i * 52} width="250" height="28" rx="4"
+              fill="var(--surface-2)" stroke={i === 2 ? "var(--coral)" : "var(--border)"} strokeWidth={i === 2 ? 1 : 0.5} />
+          </g>
+        ))}
+        <text x="380" y="204" style={{ fontSize: 9.5, fill: "var(--coral)" }}>Senha precisa de 8 caracteres. Você digitou 5.</text>
+        <Lines x={380} y={230} style={T.small} lh={15}
+          lines={["rótulo fica visível sempre", "erro aponta o campo e o motivo", "dica antes de errar, não depois"]} />
+
+        <Lines x={340} y={332} anchor="middle" style={T.cap}
+          lines={["formulário é onde a maioria das pessoas desiste de um produto"]} />
       </svg>
     ),
   },
